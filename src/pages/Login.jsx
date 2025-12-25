@@ -1,6 +1,5 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { Box, Card, CardContent, TextField, Button, Typography, Alert, Divider, CircularProgress } from '@mui/material'
-import UploadFileIcon from '@mui/icons-material/UploadFile'
 import KeyIcon from '@mui/icons-material/Key'
 import axios from 'axios'
 
@@ -9,26 +8,7 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState('admin123')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const [configFile, setConfigFile] = useState(null)
   const [apiKeyFile, setApiKeyFile] = useState(null)
-
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = (event) => {
-        try {
-          const config = JSON.parse(event.target.result)
-          localStorage.setItem('dbConfig', JSON.stringify(config))
-          setConfigFile(file.name)
-          setError('')
-        } catch (err) {
-          setError('Invalid config file format')
-        }
-      }
-      reader.readAsText(file)
-    }
-  }
 
   const handleApiKeyUpload = (e) => {
     const file = e.target.files[0]
@@ -74,14 +54,9 @@ export default function Login({ onLogin }) {
           <Typography variant="h5" gutterBottom align="center">WMS Questionnaire Login</Typography>
           
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-          {configFile && <Alert severity="success" sx={{ mb: 2 }}>DB Config: {configFile}</Alert>}
           {apiKeyFile && <Alert severity="success" sx={{ mb: 2 }}>API Key: {apiKeyFile}</Alert>}
           
           <Box sx={{ mb: 2 }}>
-            <Button variant="outlined" component="label" fullWidth startIcon={<UploadFileIcon />} sx={{ mb: 1 }}>
-              Upload DB Config (db-config.json)
-              <input type="file" hidden accept=".json" onChange={handleFileUpload} />
-            </Button>
             <Button variant="outlined" component="label" fullWidth startIcon={<KeyIcon />}>
               Upload API Key (api-key.json)
               <input type="file" hidden accept=".json" onChange={handleApiKeyUpload} />
