@@ -1,0 +1,255 @@
+﻿require('dotenv').config();
+const { connectToDatabase } = require('./utils/db.js');
+const Assessment = require('./models/Assessment.js');
+const Report = require('./models/Report.js');
+const Company = require('./models/Company.js');
+const Questionnaire = require('./models/Questionnaire.js');
+
+exports.handler = async (event) => {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
+  }
+
+  try {
+    await connectToDatabase();
+    const { assessmentId, userId } = JSON.parse(event.body);
+
+    const assessment = await Assessment.findById(assessmentId)
+      .populate('company')
+      .populate('questionnaire')
+      .populate('user');
+
+    if (!assessment) {
+      return { statusCode: 404, headers, body: JSON.stringify({ error: 'Assessment not found' }) };
+    }
+
+    const aiAnalysis = await generateAIAnalysis(assessment);
+
+    const report = await Report.create({
+      assessmentId: assessment._id,
+      companyId: assessment.company._id,
+      generatedBy: userId,
+      reportData: aiAnalysis,
+      status: 'draft'
+    });
+
+    return { statusCode: 200, headers, body: JSON.stringify(report) };
+  } catch (error) {
+    console.error('Error generating report:', error);
+    return { statusCode: 500, headers, body: JSON.stringify({ error: error.message }) };
+  }
+};
+
+async function generateAIAnalysis(assessment) {
+  const answers = assessment.answers || [];
+  const questionnaire = assessment.questionnaire;
+  const company = assessment.company;
+
+  const answerMap = {};
+  answers.forEach(a => {
+    answerMap[a.questionId] = a.value;
+  });
+
+  const executiveSummary = `Assessment completed for ${company.name}. Analysis based on ${answers.length} responses across ${questionnaire.sections?.length || 0} sections.`;
+
+  const painPoints = identifyPainPoints(answerMap);
+  const opportunities = identifyOpportunities(answerMap);
+  const valuePropositions = generateValuePropositions(answerMap);
+  const capabilityGaps = identifyCapabilityGaps(answerMap);
+  const recommendations = generateRecommendations(painPoints, opportunities);
+  const metrics = extractMetrics(answerMap);
+
+  return {
+    executiveSummary,
+    painPoints,
+    opportunities,
+    valuePropositions,
+    capabilityGaps,
+    recommendations,
+    metrics
+  };
+}
+
+function identifyPainPoints(answers) {
+  const painPoints = [];
+  
+  if (answers.exec_7 && parseFloat(answers.exec_7) < 95) {
+    painPoints.push({
+      category: 'Inventory Accuracy',
+      description: `Current inventory accuracy is ${answers.exec_7}%, below industry best practice of 98%+`,
+      impact: 'High - Leads to stockouts, overstocking, and customer dissatisfaction',
+      severity: 'high'
+    });
+  }
+
+  if (answers.exec_8 && parseFloat(answers.exec_8) > 5) {
+    painPoints.push({
+      category: 'Returns Rate',
+      description: `Returns rate of ${answers.exec_8}% is above acceptable threshold`,
+      impact: 'Medium - Increases operational costs and reduces customer satisfaction',
+      severity: 'medium'
+    });
+  }
+
+  if (answers.exec_12 && parseFloat(answers.exec_12) > 85) {
+    painPoints.push({
+      category: 'Warehouse Capacity',
+      description: `Warehouse operating at ${answers.exec_12}% capacity - approaching maximum`,
+      impact: 'High - Limited flexibility for growth and seasonal peaks',
+      severity: 'high'
+    });
+  }
+
+  return painPoints;
+}
+
+function identifyOpportunities(answers) {
+  const opportunities = [];
+
+  opportunities.push({
+    title: 'Improve Inventory Accuracy',
+    description: 'Implement real-time inventory tracking with RF scanning and cycle counting',
+    expectedValue: 'Reduce inventory carrying costs by 15-20%',
+    timeframe: '6-12 months',
+    priority: 1
+  });
+
+  opportunities.push({
+    title: 'Optimize Order Fulfillment',
+    description: 'Implement wave picking and zone-based fulfillment strategies',
+    expectedValue: 'Increase picking productivity by 25-30%',
+    timeframe: '3-6 months',
+    priority: 2
+  });
+
+  opportunities.push({
+    title: 'Reduce Returns Processing Time',
+    description: 'Streamline returns workflow with automated disposition rules',
+    expectedValue: 'Reduce returns processing time by 40%',
+    timeframe: '6-9 months',
+    priority: 3
+  });
+
+  return opportunities;
+}
+
+function generateValuePropositions(answers) {
+  return [
+    {
+      businessProcess: 'Order Processing to Shipping',
+      currentState: 'Manual processes, paper-based picking, limited visibility',
+      proposedSolution: 'Infor WMS with RF-directed picking, wave management, and real-time tracking',
+      expectedBenefits: [
+        'Reduce order cycle time by 30%',
+        'Improve order accuracy to 99.5%+',
+        'Increase on-time shipping to 98%+',
+        'Reduce labor costs by 20%'
+      ],
+      roiImpact: 'Estimated annual savings of $500K-$1M'
+    },
+    {
+      businessProcess: 'Inventory Move to Count',
+      currentState: 'Annual physical counts, reactive cycle counting, high shrinkage',
+      proposedSolution: 'Infor WMS with perpetual inventory, automated cycle counting, and exception-based management',
+      expectedBenefits: [
+        'Improve inventory accuracy to 99%+',
+        'Reduce write-offs by 50%',
+        'Eliminate annual physical inventory',
+        'Reduce carrying costs by 15%'
+      ],
+      roiImpact: 'Estimated annual savings of $300K-$600K'
+    },
+    {
+      businessProcess: 'Inbound to Put Away',
+      currentState: 'Manual receiving, paper-based putaway, inefficient space utilization',
+      proposedSolution: 'Infor WMS with ASN processing, directed putaway, and slotting optimization',
+      expectedBenefits: [
+        'Reduce receiving time by 40%',
+        'Improve space utilization by 25%',
+        'Reduce putaway labor by 30%',
+        'Faster inventory availability'
+      ],
+      roiImpact: 'Estimated annual savings of $200K-$400K'
+    }
+  ];
+}
+
+function identifyCapabilityGaps(answers) {
+  return [
+    {
+      area: 'Real-time Visibility',
+      currentCapability: 'Limited visibility, end-of-shift reporting',
+      requiredCapability: 'Real-time inventory and order status visibility',
+      inforWMSSolution: 'Infor WMS provides real-time dashboards, mobile access, and instant reporting'
+    },
+    {
+      area: 'Labor Management',
+      currentCapability: 'Manual time tracking, no productivity standards',
+      requiredCapability: 'Automated labor tracking with productivity metrics',
+      inforWMSSolution: 'Infor WMS includes integrated labor management with engineered standards'
+    },
+    {
+      area: 'Integration',
+      currentCapability: 'Manual data entry between systems',
+      requiredCapability: 'Seamless integration with ERP, TMS, and e-commerce platforms',
+      inforWMSSolution: 'Infor WMS offers pre-built integrations and robust API framework'
+    }
+  ];
+}
+
+function generateRecommendations(painPoints, opportunities) {
+  return [
+    {
+      phase: 'Phase 1: Quick Wins (0-3 months)',
+      actions: [
+        'Implement RF scanning for receiving and putaway',
+        'Establish cycle counting program',
+        'Deploy basic dashboards for visibility'
+      ],
+      expectedOutcome: '15-20% improvement in inventory accuracy'
+    },
+    {
+      phase: 'Phase 2: Core Operations (3-6 months)',
+      actions: [
+        'Roll out wave picking and zone management',
+        'Implement directed putaway and slotting',
+        'Deploy labor management module'
+      ],
+      expectedOutcome: '25-30% improvement in picking productivity'
+    },
+    {
+      phase: 'Phase 3: Optimization (6-12 months)',
+      actions: [
+        'Implement advanced analytics and reporting',
+        'Deploy mobile apps for managers',
+        'Integrate with upstream/downstream systems'
+      ],
+      expectedOutcome: 'Full digital transformation with 40%+ operational improvement'
+    }
+  ];
+}
+
+function extractMetrics(answers) {
+  return {
+    currentState: {
+      inventoryAccuracy: answers.exec_7 || 'N/A',
+      returnsRate: answers.exec_8 || 'N/A',
+      capacityUtilization: answers.exec_12 || 'N/A',
+      otifScore: answers.exec_5 || 'N/A',
+      fulfillmentAccuracy: answers.exec_6 || 'N/A'
+    },
+    projectedImprovements: {
+      inventoryAccuracy: '99%+',
+      returnsRate: '<3%',
+      capacityUtilization: 'Optimized with 15% more effective space',
+      otifScore: '98%+',
+      fulfillmentAccuracy: '99.5%+'
+    }
+  };
+}

@@ -1,0 +1,10 @@
+[
+  {"questionId":"rpt_1","value":true},
+  {"questionId":"rpt_2","value":"OTIF, inventory accuracy, order accuracy, cost per order, labor productivity, space utilization, pick accuracy"},
+  {"questionId":"rpt_3","value":true},
+  {"questionId":"rpt_4","value":"Daily operational reports, weekly KPI dashboards, monthly client scorecards"},
+  {"questionId":"rpt_5","value":false},
+  {"questionId":"rpt_6","value":true},
+  {"questionId":"rpt_7","value":false},
+  {"questionId":"rpt_8","value":true}
+]

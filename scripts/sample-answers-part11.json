@@ -1,0 +1,19 @@
+[
+  {"questionId":"audit_1","value":"Quarterly internal audits, annual external audits for key clients"},
+  {"questionId":"audit_2","value":"Cycle counting program, inventory reconciliation, process compliance checks"},
+  {"questionId":"audit_3","value":"Corrective action plans, process improvements, staff retraining"},
+  {"questionId":"comp_6","value":"Competitive rates, service quality, technology capabilities, industry expertise"},
+  {"questionId":"comp_7","value":"Client references, case studies, facility tours, pilot programs"},
+  {"questionId":"comp_8","value":"Transparent pricing, flexible contracts, performance guarantees"},
+  {"questionId":"tech_8","value":"Cloud-based, multi-tenant, API-first architecture, mobile capabilities"},
+  {"questionId":"tech_9","value":"Real-time inventory visibility, advanced analytics, automated billing, client portals"},
+  {"questionId":"tech_10","value":"Scalability for growth, reduced IT overhead, faster implementation, automatic updates"},
+  {"questionId":"impl_1","value":"12-18 months for full implementation across all facilities"},
+  {"questionId":"impl_2","value":"Phased approach - pilot at one facility, then rollout to others"},
+  {"questionId":"impl_3","value":"Dedicated project team, external consultants, vendor support"},
+  {"questionId":"impl_4","value":"Data migration complexity, user adoption, minimizing operational disruption"},
+  {"questionId":"change_1","value":"Change management plan in development, executive sponsorship secured"},
+  {"questionId":"change_2","value":"Town halls, training sessions, super-user program, feedback channels"},
+  {"questionId":"change_3","value":"Some resistance expected, plan includes incentives and support"},
+  {"questionId":"maint_1","value":"Vendor support contract, internal IT team, escalation procedures"}
+]

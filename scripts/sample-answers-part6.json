@@ -1,0 +1,15 @@
+[
+  {"questionId":"sus_1","value":"Recycling program for cardboard/plastic, energy-efficient lighting in main DC"},
+  {"questionId":"sus_2","value":"Tracking packaging waste, evaluating renewable energy options"},
+  {"questionId":"sus_3","value":"Some clients require sustainable packaging, carbon footprint reporting requested"},
+  {"questionId":"cust_1","value":"45 active clients across multiple industries"},
+  {"questionId":"cust_2","value":"Client portals for order entry and tracking, EDI integration, dedicated account managers"},
+  {"questionId":"cust_3","value":"Quarterly business reviews, monthly performance reports, 24/7 support line"},
+  {"questionId":"cust_4","value":"Annual NPS surveys, quarterly satisfaction scores, average 8.2/10"},
+  {"questionId":"risk_1","value":"System downtime, inventory shrinkage, client data security, capacity constraints"},
+  {"questionId":"risk_2","value":"Backup systems, insurance coverage, cybersecurity measures, capacity planning"},
+  {"questionId":"risk_3","value":"Annual DR tests, documented procedures, off-site backups"},
+  {"questionId":"future_1","value":"Automation implementation, AI-driven optimization, expanded service offerings, geographic expansion"},
+  {"questionId":"future_2","value":"Robotics for picking, automated storage systems, predictive analytics"},
+  {"questionId":"future_3","value":"Same-day delivery capabilities, reverse logistics services, value-added services expansion"}
+]

@@ -1,0 +1,15 @@
+[
+  {"questionId":"pck_1","value":"Discrete picking (40%), batch picking (35%), wave picking (25%)"},
+  {"questionId":"pck_2","value":"98.2%"},
+  {"questionId":"pck_3","value":"145 lines per hour average"},
+  {"questionId":"pck_4","value":true},
+  {"questionId":"pck_5","value":true},
+  {"questionId":"pck_6","value":"35 minutes average order cycle time"},
+  {"questionId":"pck_7","value":true},
+  {"questionId":"pck_8","value":true},
+  {"questionId":"pck_9","value":"35 orders per hour per packer"},
+  {"questionId":"pck_10","value":false},
+  {"questionId":"pck_11","value":"0.8% mis-pick rate"},
+  {"questionId":"pck_12","value":true},
+  {"questionId":"pck_13","value":true}
+]

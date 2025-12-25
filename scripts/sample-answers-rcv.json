@@ -1,0 +1,14 @@
+[
+  {"questionId":"rcv_1","value":"180+ suppliers across all clients"},
+  {"questionId":"rcv_2","value":"3-7 days average lead time"},
+  {"questionId":"rcv_3","value":"850 inbound deliveries per week, ~170 per day"},
+  {"questionId":"rcv_4","value":"12 lines average per PO/ASN"},
+  {"questionId":"rcv_5","value":"45 minutes average putaway cycle time"},
+  {"questionId":"rcv_6","value":"$1.8 million annually for inbound operations"},
+  {"questionId":"rcv_7","value":true},
+  {"questionId":"rcv_8","value":"97.9% receiving accuracy"},
+  {"questionId":"rcv_9","value":true},
+  {"questionId":"rcv_10","value":"4 hours average dock-to-stock time"},
+  {"questionId":"rcv_11","value":true},
+  {"questionId":"rcv_12","value":"78% receiving dock utilization"}
+]

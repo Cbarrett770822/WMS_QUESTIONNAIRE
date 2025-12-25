@@ -1,0 +1,136 @@
+﻿import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { Box, Typography, Button, Card, CardContent, TextField, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, CircularProgress, Alert } from '@mui/material'
+import axios from 'axios'
+
+export default function Questionnaire() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [questionnaire, setQuestionnaire] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [answers, setAnswers] = useState({})
+  const [currentSection, setCurrentSection] = useState(0)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    fetchQuestionnaire()
+  }, [id])
+
+  const fetchQuestionnaire = async () => {
+    try {
+      const response = await axios.get('/.netlify/functions/questionnaires')
+      const allQuestionnaires = response.data
+      const found = allQuestionnaires.find(q => q._id === id)
+      if (found) {
+        setQuestionnaire(found)
+      } else {
+        setError('Questionnaire not found')
+      }
+    } catch (error) {
+      console.error('Error fetching questionnaire:', error)
+      setError('Failed to load questionnaire')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleAnswerChange = (questionId, value) => {
+    setAnswers({ ...answers, [questionId]: value })
+  }
+
+  const handleNext = () => {
+    if (currentSection < questionnaire.sections.length - 1) {
+      setCurrentSection(currentSection + 1)
+    }
+  }
+
+  const handlePrevious = () => {
+    if (currentSection > 0) {
+      setCurrentSection(currentSection - 1)
+    }
+  }
+
+  const handleSubmit = async () => {
+    try {
+      alert('Assessment submitted successfully!')
+      navigate('/dashboard')
+    } catch (error) {
+      setError('Failed to submit assessment')
+    }
+  }
+
+  if (loading) return <Box sx={{ p: 3, display: 'flex', justifyContent: 'center' }}><CircularProgress /></Box>
+  if (error) return <Box sx={{ p: 3 }}><Alert severity="error">{error}</Alert></Box>
+  if (!questionnaire) return <Box sx={{ p: 3 }}><Typography>Questionnaire not found</Typography></Box>
+
+  const section = questionnaire.sections?.[currentSection]
+
+  return (
+    <Box sx={{ p: 3, maxWidth: 800, mx: 'auto' }}>
+      <Typography variant="h4" gutterBottom>{questionnaire.title}</Typography>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        {questionnaire.description}
+      </Typography>
+
+      {section ? (
+        <Card sx={{ mb: 3 }}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              Section {currentSection + 1} of {questionnaire.sections.length}: {section.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+              {section.description}
+            </Typography>
+
+            {section.questions?.map((question, idx) => (
+              <Box key={idx} sx={{ mb: 3 }}>
+                <FormControl fullWidth>
+                  <FormLabel>{question.text}</FormLabel>
+                  {question.type === 'text' && (
+                    <TextField
+                      fullWidth
+                      margin="normal"
+                      value={answers[question.id] || ''}
+                      onChange={(e) => handleAnswerChange(question.id, e.target.value)}
+                    />
+                  )}
+                  {question.type === 'boolean' && (
+                    <RadioGroup
+                      value={answers[question.id] || ''}
+                      onChange={(e) => handleAnswerChange(question.id, e.target.value)}
+                    >
+                      <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                      <FormControlLabel value="no" control={<Radio />} label="No" />
+                    </RadioGroup>
+                  )}
+                </FormControl>
+              </Box>
+            ))}
+          </CardContent>
+        </Card>
+      ) : (
+        <Alert severity="info">No sections available for this questionnaire</Alert>
+      )}
+
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+        <Button 
+          variant="outlined" 
+          onClick={handlePrevious}
+          disabled={currentSection === 0}
+        >
+          Previous
+        </Button>
+        
+        {currentSection < (questionnaire.sections?.length || 0) - 1 ? (
+          <Button variant="contained" onClick={handleNext}>
+            Next Section
+          </Button>
+        ) : (
+          <Button variant="contained" color="success" onClick={handleSubmit}>
+            Submit Assessment
+          </Button>
+        )}
+      </Box>
+    </Box>
+  )
+}

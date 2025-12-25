@@ -1,0 +1,20 @@
+[
+  {"questionId":"org_1","value":"3 DCs - Main DC (250,000 sq ft), Regional DC East (120,000 sq ft), Regional DC West (150,000 sq ft)"},
+  {"questionId":"org_2","value":"Main DC: 24/7, Regional DCs: 16 hours/day (6am-10pm)"},
+  {"questionId":"org_3","value":"45,000 bin locations across all facilities"},
+  {"questionId":"org_4","value":"Returns processing area, QC inspection zone, receiving docks (12 doors), shipping docks (18 doors), kitting/VAS area, packing stations, cross-dock area"},
+  {"questionId":"org_5","value":"Selective pallet racking (60%), floor stacking (20%), flow racks (15%), small parts bins (5%)"},
+  {"questionId":"org_6","value":"Reach trucks (12), counterbalance forklifts (8), pallet jacks (25), conveyor systems in main DC"},
+  {"questionId":"org_7","value":"87% average - Main DC at 92%, Regional facilities at 80-85%"},
+  {"questionId":"org_8","value":"Pallet racking, drive-in racking for high-density storage, shelving for small parts, floor stacking for bulk items"},
+  {"questionId":"inv_1","value":"125,000 SKUs managed across all clients"},
+  {"questionId":"inv_2","value":"Client-owned inventory, consignment models for some retail clients"},
+  {"questionId":"inv_3","value":"Yes - lot tracking for food/beverage clients, serial tracking for electronics"},
+  {"questionId":"inv_4","value":"Cycle counting program - A items weekly, B items monthly, C items quarterly"},
+  {"questionId":"inv_5","value":"97.8% overall accuracy"},
+  {"questionId":"inv_6","value":"FIFO for perishables and fashion, FEFO for food items, LIFO for some industrial products"},
+  {"questionId":"inv_7","value":"Yes - separate zones per client, some shared space for overflow"},
+  {"questionId":"inv_8","value":"Average 45 days, varies by client from 15-90 days"},
+  {"questionId":"inv_9","value":"Quarantine area for damaged goods, separate returns processing zone with inspection stations"},
+  {"questionId":"inv_10","value":"Monthly physical counts for high-value items, annual full inventory for all clients"}
+]

@@ -1,0 +1,11 @@
+[
+  {"questionId":"sto_1","value":true},
+  {"questionId":"sto_2","value":true},
+  {"questionId":"sto_3","value":"87% average utilization"},
+  {"questionId":"sto_4","value":true},
+  {"questionId":"sto_5","value":"8 minutes average per pallet"},
+  {"questionId":"sto_6","value":true},
+  {"questionId":"sto_7","value":"15% of volume cross-docked"},
+  {"questionId":"sto_8","value":true},
+  {"questionId":"sto_9","value":true}
+]

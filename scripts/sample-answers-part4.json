@@ -1,0 +1,20 @@
+[
+  {"questionId":"labor_1","value":"285 warehouse associates across all facilities"},
+  {"questionId":"labor_2","value":"Day shift (60%), evening shift (30%), night shift (10%)"},
+  {"questionId":"labor_3","value":"LMS integrated with WMS, engineered standards for key activities"},
+  {"questionId":"labor_4","value":"82% average labor utilization"},
+  {"questionId":"labor_5","value":"18% annual turnover rate"},
+  {"questionId":"labor_6","value":"Temp labor during peak seasons (up to 40% increase)"},
+  {"questionId":"labor_7","value":"Weekly training for new hires, monthly safety training, quarterly cross-training"},
+  {"questionId":"tech_1","value":"Legacy WMS (10 years old), separate TMS, spreadsheet-based billing"},
+  {"questionId":"tech_2","value":"EDI for 60% of clients, API integrations for 20%, manual for 20%"},
+  {"questionId":"tech_3","value":"RF scanners (150 units), desktop computers, label printers, some tablets"},
+  {"questionId":"tech_4","value":"Basic dashboards in WMS, Excel-based reporting for clients"},
+  {"questionId":"tech_5","value":"Yes - evaluating cloud WMS, automation, and advanced analytics"},
+  {"questionId":"tech_6","value":"Evaluating AS/RS for high-velocity items, automated sortation"},
+  {"questionId":"tech_7","value":"Limited - basic inventory and order status visibility"},
+  {"questionId":"qual_1","value":"ISO 9001 certified, working towards ISO 13485 for medical device clients"},
+  {"questionId":"qual_2","value":"Receiving inspection, in-process checks, final inspection before shipping"},
+  {"questionId":"qual_3","value":"QMS software for non-conformance tracking, CAPA process"},
+  {"questionId":"qual_4","value":"0.8% defect rate"}
+]

@@ -1,0 +1,20 @@
+[
+  {"questionId":"pack_1","value":"8,500 orders per day average"},
+  {"questionId":"pack_2","value":"Client-specific packaging requirements, auto-boxing for standard items"},
+  {"questionId":"pack_3","value":"Manifesting system integrated with carriers, some manual documentation"},
+  {"questionId":"pack_4","value":"Kitting, labeling, gift wrapping, custom packaging, promotional inserts"},
+  {"questionId":"pack_5","value":"35 orders per hour per packer"},
+  {"questionId":"pack_6","value":"Automated carton sealers, label printers, dimensioning systems at 60% of pack stations"},
+  {"questionId":"ship_1","value":"8,200 outbound shipments per day"},
+  {"questionId":"ship_2","value":"UPS, FedEx, USPS, regional LTL carriers, client-arranged freight"},
+  {"questionId":"ship_3","value":"Multi-carrier shipping software with rate shopping"},
+  {"questionId":"ship_4","value":"94.5% OTIF performance"},
+  {"questionId":"ship_5","value":"Staging by carrier, scheduled pickup times, some live loading"},
+  {"questionId":"ship_6","value":"Automated manifest generation, EDI 856 ASNs for 70% of shipments"},
+  {"questionId":"ship_7","value":"Carrier tracking integration, client portals for visibility"},
+  {"questionId":"ret_1","value":"2.3% return rate across all clients"},
+  {"questionId":"ret_2","value":"Separate returns area with inspection stations, disposition workflow (restock/repair/scrap)"},
+  {"questionId":"ret_3","value":"Manual inspection and disposition, some client-specific rules in WMS"},
+  {"questionId":"ret_4","value":"Average 5 days from receipt to disposition"},
+  {"questionId":"ret_5","value":"Client-specific policies - some immediate credit, others after inspection"}
+]

@@ -1,0 +1,17 @@
+[
+  {"questionId":"cost_1","value":"$12.50 per order all-in cost"},
+  {"questionId":"cost_2","value":"Labor (45%), facility (25%), technology (15%), transportation (10%), other (5%)"},
+  {"questionId":"cost_3","value":"Activity-based costing per client, monthly reconciliation"},
+  {"questionId":"cost_4","value":"Quarterly cost reviews, annual rate negotiations with clients"},
+  {"questionId":"client_1","value":"Consumer goods (40%), electronics (25%), fashion/apparel (20%), food/beverage (10%), other (5%)"},
+  {"questionId":"client_2","value":"From 500 to 50,000 orders per month per client"},
+  {"questionId":"client_3","value":"Standard SLAs for all clients, customized for top 10 clients"},
+  {"questionId":"client_4","value":"Dedicated account managers, monthly business reviews, 24/7 operations support"},
+  {"questionId":"season_1","value":"November-December (160% of average), back-to-school August-September (130%)"},
+  {"questionId":"season_2","value":"Temporary labor, extended shifts, weekend operations, overflow to partner facilities"},
+  {"questionId":"season_3","value":"Forecasting with clients 3 months ahead, capacity planning, staffing models"},
+  {"questionId":"value_1","value":"Kitting and assembly, custom labeling, gift wrapping, promotional inserts, returns processing"},
+  {"questionId":"value_2","value":"30% of clients use VAS regularly, 50% occasionally"},
+  {"questionId":"value_3","value":"Separate VAS area with dedicated staff, quality control procedures"},
+  {"questionId":"value_4","value":"Based on time and materials, integrated into monthly billing"}
+]

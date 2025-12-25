@@ -1,0 +1,17 @@
+[
+  {"questionId":"yard_1","value":"Trailer parking for 50 trailers, separate inbound/outbound lanes"},
+  {"questionId":"yard_2","value":"Manual yard management, check-in/check-out logs"},
+  {"questionId":"yard_3","value":"Average 2-hour dwell time for inbound, 1-hour for outbound"},
+  {"questionId":"dock_1","value":"12 inbound doors, 18 outbound doors across all facilities"},
+  {"questionId":"dock_2","value":"Scheduled appointments for 80% of deliveries, first-come-first-served for remaining"},
+  {"questionId":"dock_3","value":"85% on-time arrival rate, some delays during peak periods"},
+  {"questionId":"cross_1","value":"15% of volume cross-docked, primarily fast-moving consumer goods"},
+  {"questionId":"cross_2","value":"Dedicated cross-dock area, direct transfer from receiving to shipping"},
+  {"questionId":"cross_3","value":"Same-day or next-day turnaround for cross-dock items"},
+  {"questionId":"wave_1","value":"Wave picking for multi-line orders, 3-4 waves per shift"},
+  {"questionId":"wave_2","value":"Manual wave planning based on order cut-off times and carrier schedules"},
+  {"questionId":"wave_3","value":"4-6 hours from wave release to ship"},
+  {"questionId":"alloc_1","value":"FIFO for most products, client-specific rules for some"},
+  {"questionId":"alloc_2","value":"System-directed based on location and product attributes"},
+  {"questionId":"alloc_3","value":"Lot/batch tracking for regulated products, expiry date management"}
+]

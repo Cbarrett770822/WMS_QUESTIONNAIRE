@@ -1,0 +1,19 @@
+[
+  {"questionId":"kpi_1","value":"OTIF, inventory accuracy, order accuracy, cost per order, labor productivity"},
+  {"questionId":"kpi_2","value":"Weekly KPI reviews, monthly client scorecards"},
+  {"questionId":"kpi_3","value":"Excel-based dashboards, some WMS reports"},
+  {"questionId":"kpi_4","value":"Monthly reports to clients, quarterly business reviews"},
+  {"questionId":"int_1","value":"ERP systems (SAP, NetSuite), e-commerce platforms (Shopify, Magento), carrier systems"},
+  {"questionId":"int_2","value":"EDI (60%), API (20%), flat files/FTP (15%), manual (5%)"},
+  {"questionId":"int_3","value":"Real-time for critical transactions, batch updates overnight for reporting"},
+  {"questionId":"int_4","value":"Occasional data sync issues, manual reconciliation required monthly"},
+  {"questionId":"scale_1","value":"Current capacity 12,500 orders/day, can scale to 18,000 with existing resources"},
+  {"questionId":"scale_2","value":"November-December peak at 160% of average volume"},
+  {"questionId":"scale_3","value":"Temp labor, extended hours, some weekend operations"},
+  {"questionId":"scale_4","value":"Projected 25% growth over next 3 years"},
+  {"questionId":"comp_1","value":"Client billing complexity, limited real-time visibility, manual reporting processes"},
+  {"questionId":"comp_2","value":"Cloud WMS with multi-client capabilities, advanced analytics, automated billing"},
+  {"questionId":"comp_3","value":"12-18 month timeline, phased implementation across facilities"},
+  {"questionId":"comp_4","value":"$2.5-3.5 million total project budget"},
+  {"questionId":"comp_5","value":"Executive sponsorship confirmed, cross-functional team identified, change management plan in development"}
+]

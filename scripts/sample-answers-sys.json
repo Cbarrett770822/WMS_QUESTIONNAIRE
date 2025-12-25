@@ -1,0 +1,14 @@
+[
+  {"questionId":"sys_1","value":"Legacy WMS system (10 years old), separate TMS, spreadsheet-based billing"},
+  {"questionId":"sys_2","value":"On-premise servers in main DC"},
+  {"questionId":"sys_3","value":"18 months for initial implementation"},
+  {"questionId":"sys_4","value":true},
+  {"questionId":"sys_5","value":"EDI for 60% of clients, API integrations for 20%, flat files/FTP for 15%, manual for 5%"},
+  {"questionId":"sys_6","value":true},
+  {"questionId":"sys_7","value":"3 full-time IT staff dedicated to warehouse systems"},
+  {"questionId":"sys_8","value":"$450,000 annually including licenses, support, and maintenance"},
+  {"questionId":"sys_9","value":false},
+  {"questionId":"sys_10","value":"Version 8.2, released 2015"},
+  {"questionId":"sys_11","value":"Mix of SAP and NetSuite depending on client"},
+  {"questionId":"sys_12","value":false}
+]

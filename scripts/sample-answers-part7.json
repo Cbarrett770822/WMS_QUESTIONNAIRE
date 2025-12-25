@@ -1,0 +1,18 @@
+[
+  {"questionId":"data_1","value":"Client data in separate databases, SKU master data, order history, inventory transactions"},
+  {"questionId":"data_2","value":"Daily backups to cloud storage, weekly full backups, monthly archive"},
+  {"questionId":"data_3","value":"Role-based access control, encryption at rest, SOC 2 Type II in progress"},
+  {"questionId":"data_4","value":"GDPR compliant for EU clients, following data retention policies per client contracts"},
+  {"questionId":"perf_1","value":"Order cycle time, pick accuracy, dock-to-stock time, space utilization"},
+  {"questionId":"perf_2","value":"Industry benchmarks from 3PL associations, client-specific SLAs"},
+  {"questionId":"perf_3","value":"Meeting or exceeding most KPIs, some challenges with billing accuracy and real-time visibility"},
+  {"questionId":"perf_4","value":"Quarterly reviews with improvement initiatives, continuous improvement culture"},
+  {"questionId":"train_1","value":"2-week onboarding program, safety certification, WMS training, client-specific procedures"},
+  {"questionId":"train_2","value":"Monthly safety refreshers, quarterly skills training, annual certifications"},
+  {"questionId":"train_3","value":"Combination of classroom, hands-on, and e-learning modules"},
+  {"questionId":"train_4","value":"Skills assessments, safety incident tracking, productivity metrics"},
+  {"questionId":"safe_1","value":"OSHA compliant, regular safety audits, incident reporting system"},
+  {"questionId":"safe_2","value":"PPE requirements, equipment certifications, lockout/tagout procedures"},
+  {"questionId":"safe_3","value":"Monthly safety meetings, daily toolbox talks, safety incentive programs"},
+  {"questionId":"safe_4","value":"2.1 incidents per 100 employees annually, below industry average"}
+]

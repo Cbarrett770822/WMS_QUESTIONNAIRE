@@ -1,0 +1,14 @@
+[
+  {"questionId":"shp_1","value":"All three channels - B2B (60%), B2C (30%), B2B2C (10%)"},
+  {"questionId":"shp_2","value":"8,500 orders per day average"},
+  {"questionId":"shp_3","value":"3.2 lines average per order"},
+  {"questionId":"shp_4","value":"6 hours average fulfillment time"},
+  {"questionId":"shp_5","value":"$2.1 million annually for outbound operations"},
+  {"questionId":"shp_6","value":"94.5%"},
+  {"questionId":"shp_7","value":true},
+  {"questionId":"shp_8","value":true},
+  {"questionId":"shp_9","value":"98.7%"},
+  {"questionId":"shp_10","value":true},
+  {"questionId":"shp_11","value":"82% shipping dock utilization"},
+  {"questionId":"shp_12","value":true}
+]

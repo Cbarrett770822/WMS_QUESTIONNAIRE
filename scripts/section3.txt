@@ -1,0 +1,15 @@
+﻿,
+  {
+    title: 'Warehouse Organisation',
+    order: 2,
+    questions: [
+      { id: 'org_1', text: 'Number and size of warehouses/DCs', type: 'text', required: true, order: 1 },
+      { id: 'org_2', text: 'Hours of operation', type: 'text', required: true, order: 2 },
+      { id: 'org_3', text: 'Number of bin locations', type: 'text', required: true, order: 3 },
+      { id: 'org_4', text: 'Dedicated areas in warehouse', type: 'text', required: true, order: 4 },
+      { id: 'org_5', text: 'Location structure types', type: 'text', required: true, order: 5 },
+      { id: 'org_6', text: 'Automated equipment', type: 'text', required: false, order: 6 },
+      { id: 'org_7', text: 'Warehouse capacity %', type: 'text', required: true, order: 7 },
+      { id: 'org_8', text: 'Storage systems used', type: 'text', required: true, order: 8 }
+    ]
+  }

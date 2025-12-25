@@ -1,0 +1,19 @@
+[
+  {"questionId":"maint_2","value":"Monthly system health checks, quarterly updates, annual major upgrades"},
+  {"questionId":"maint_3","value":"24/7 vendor support, 4-hour response time for critical issues"},
+  {"questionId":"upgrade_1","value":"Quarterly feature releases, monthly security patches"},
+  {"questionId":"upgrade_2","value":"Test environment validation, off-hours deployment, rollback procedures"},
+  {"questionId":"upgrade_3","value":"Release notes, user training, help desk support"},
+  {"questionId":"disaster_1","value":"Documented DR plan, annual testing, off-site backups"},
+  {"questionId":"disaster_2","value":"Cloud-based backup, redundant systems, failover capabilities"},
+  {"questionId":"disaster_3","value":"4-hour RTO for critical systems, 24-hour RPO for data"},
+  {"questionId":"vendor_1","value":"Financial stability, industry experience, customer references, technology roadmap"},
+  {"questionId":"vendor_2","value":"RFP process, vendor demos, reference checks, pilot program"},
+  {"questionId":"vendor_3","value":"Clear SLAs, performance metrics, regular business reviews"},
+  {"questionId":"contract_1","value":"3-5 year initial term, annual renewal options"},
+  {"questionId":"contract_2","value":"Implementation services, training, support, maintenance, upgrades"},
+  {"questionId":"contract_3","value":"Performance guarantees, uptime SLAs, support response times"},
+  {"questionId":"roi_1","value":"Labor savings, improved accuracy, reduced errors, better space utilization"},
+  {"questionId":"roi_2","value":"18-24 month payback period expected"},
+  {"questionId":"roi_3","value":"Baseline current costs, track KPIs, quarterly ROI reviews"}
+]

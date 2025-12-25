@@ -1,0 +1,17 @@
+[
+  {"questionId":"report_1","value":"Monthly operational reports, weekly KPI dashboards, quarterly business reviews"},
+  {"questionId":"report_2","value":"Excel exports from WMS, custom reports, client portals"},
+  {"questionId":"report_3","value":"Inventory levels, order status, receiving/shipping activity, accuracy metrics"},
+  {"questionId":"report_4","value":"Monthly via email and portal, ad-hoc reports on request"},
+  {"questionId":"bill_1","value":"Monthly billing cycle, invoices by 5th of following month"},
+  {"questionId":"bill_2","value":"Storage fees, handling fees, VAS charges, transportation if applicable"},
+  {"questionId":"bill_3","value":"Manual compilation from WMS and spreadsheets, significant effort required"},
+  {"questionId":"bill_4","value":"2-3% error rate, requires manual corrections and adjustments"},
+  {"questionId":"space_1","value":"Client-dedicated zones (60%), shared flex space (40%)"},
+  {"questionId":"space_2","value":"Monthly space utilization reviews, dynamic reallocation as needed"},
+  {"questionId":"space_3","value":"87% average utilization, peaks at 95% during holiday season"},
+  {"questionId":"equip_1","value":"Forklifts, reach trucks, pallet jacks, conveyors, pack stations, RF scanners"},
+  {"questionId":"equip_2","value":"Preventive maintenance schedules, daily inspections, annual certifications"},
+  {"questionId":"equip_3","value":"95% uptime, minimal impact on operations"},
+  {"questionId":"equip_4","value":"5-7 year replacement cycle, evaluating automation investments"}
+]

@@ -1,0 +1,12 @@
+[
+  {"questionId":"met_1","value":"6 hours average order fulfillment time"},
+  {"questionId":"met_2","value":"92.3% perfect order rate"},
+  {"questionId":"met_3","value":"$12.50 per order"},
+  {"questionId":"met_4","value":"45% of total warehouse cost"},
+  {"questionId":"met_5","value":"45 days average dwell time"},
+  {"questionId":"met_6","value":"96.8% order fill rate"},
+  {"questionId":"met_7","value":"2.1% backorder rate"},
+  {"questionId":"met_8","value":"160% peak season increase"},
+  {"questionId":"met_9","value":"$285 average order value"},
+  {"questionId":"met_10","value":"98.2% order accuracy"}
+]

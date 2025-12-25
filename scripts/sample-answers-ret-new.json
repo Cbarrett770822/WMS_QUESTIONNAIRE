@@ -1,0 +1,10 @@
+[
+  {"questionId":"ret_1","value":"2.3%"},
+  {"questionId":"ret_2","value":"195 returns per day average"},
+  {"questionId":"ret_3","value":true},
+  {"questionId":"ret_4","value":"5 days average processing time"},
+  {"questionId":"ret_5","value":true},
+  {"questionId":"ret_6","value":"68% of returns are restocked"},
+  {"questionId":"ret_7","value":false},
+  {"questionId":"ret_8","value":"$320,000 annually for returns processing"}
+]

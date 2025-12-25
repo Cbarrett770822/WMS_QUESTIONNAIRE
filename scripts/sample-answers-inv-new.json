@@ -1,0 +1,17 @@
+[
+  {"questionId":"inv_1","value":"125,000 SKUs managed across all clients"},
+  {"questionId":"inv_2","value":"$45 million total inventory value"},
+  {"questionId":"inv_3","value":"97.8%"},
+  {"questionId":"inv_4","value":"$180,000 annually"},
+  {"questionId":"inv_5","value":"18% of inventory value"},
+  {"questionId":"inv_6","value":"8.2 turns per year"},
+  {"questionId":"inv_7","value":true},
+  {"questionId":"inv_8","value":"2.1% stock-out rate"},
+  {"questionId":"inv_9","value":true},
+  {"questionId":"inv_10","value":"Monthly physical counts for high-value items, annual full inventory for all clients"},
+  {"questionId":"inv_11","value":"3.5% dead stock"},
+  {"questionId":"inv_12","value":true},
+  {"questionId":"inv_13","value":true},
+  {"questionId":"inv_14","value":"18%"},
+  {"questionId":"inv_15","value":"FIFO for perishables and fashion, FEFO for food items, LIFO for some industrial products"}
+]

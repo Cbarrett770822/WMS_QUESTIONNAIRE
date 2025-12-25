@@ -1,0 +1,19 @@
+  ,
+  {
+    title: 'Warehouse Personnel & Equipment',
+    order: 3,
+    questions: [
+      { id: 'per_1', text: 'How many people do you employ to run your warehouse?', type: 'text', required: true, order: 1 },
+      { id: 'per_2', text: 'Do you employ automation (RF guns, Pick to light, ASRS, Robots)?', type: 'text', required: true, order: 2 },
+      { id: 'per_3', text: 'FTE % increase over last year?', type: 'text', required: false, order: 3 },
+      { id: 'per_4', text: 'Annual overtime as % of labor cost?', type: 'text', required: false, order: 4 },
+      { id: 'per_5', text: 'Labor cost per unit shipped?', type: 'text', required: false, order: 5 },
+      { id: 'per_6', text: 'Do you track productivity metrics per employee?', type: 'boolean', required: false, order: 6 },
+      { id: 'per_7', text: 'Number of MHE (forklifts, pallet jacks, etc)?', type: 'text', required: false, order: 7 },
+      { id: 'per_8', text: 'Number of RF devices/scanners?', type: 'text', required: false, order: 8 },
+      { id: 'per_9', text: 'Do you use voice picking?', type: 'boolean', required: false, order: 9 },
+      { id: 'per_10', text: 'Do you use pick-to-light systems?', type: 'boolean', required: false, order: 10 },
+      { id: 'per_11', text: 'Number of accidents per year?', type: 'text', required: false, order: 11 },
+      { id: 'per_12', text: 'Staff turnover rate %?', type: 'text', required: false, order: 12 }
+    ]
+  }
