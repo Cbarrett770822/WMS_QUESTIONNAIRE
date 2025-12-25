@@ -20,11 +20,21 @@ exports.handler = async (event) => {
   }
 
   try {
+    console.log('Auth-login: Starting login attempt');
+    console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
+    console.log('JWT_SECRET exists:', !!process.env.JWT_SECRET);
+    
     await connectToDatabase();
+    console.log('Database connected successfully');
+    
     const { email, password } = JSON.parse(event.body);
+    console.log('Login attempt for email:', email);
 
     const user = await User.findOne({ email });
+    console.log('User found:', !!user);
+    
     if (!user) {
+      console.log('No user found with email:', email);
       return {
         statusCode: 401,
         headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
