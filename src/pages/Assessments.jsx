@@ -36,16 +36,17 @@ export default function Assessments() {
   const fetchAssessments = async () => {
     try {
       const user = JSON.parse(localStorage.getItem('user') || '{}')
-      const params = new URLSearchParams()
       
-      if (user.company) {
-        params.append('companyId', user.company)
-      }
-      if (user.id) {
-        params.append('userId', user.id)
+      // Admin users see all assessments, regular users see only their company's assessments
+      let url = '/.netlify/functions/get-assessments'
+      
+      if (user.role !== 'admin' && user.company) {
+        url += `?companyId=${user.company}`
       }
 
-      const response = await axios.get(`/.netlify/functions/get-assessments?${params.toString()}`)
+      console.log('Fetching assessments for user:', user.email, 'role:', user.role)
+      const response = await axios.get(url)
+      console.log('Fetched assessments:', response.data.length)
       setAssessments(response.data)
     } catch (error) {
       console.error('Error fetching assessments:', error)
