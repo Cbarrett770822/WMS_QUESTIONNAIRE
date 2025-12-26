@@ -270,4 +270,15 @@ export default function Questionnaire() {
         <DialogActions>
           <Button onClick={() => navigate('/assessments')}>Cancel</Button>
           <Button onClick={handleCompanySubmit} variant="contained">Continue</Button>
-      
+        </DialogActions>
+      </Dialog>
+
+      <Snackbar
+        open={saveSuccess}
+        autoHideDuration={2000}
+        message="Progress saved"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      />
+    </Box>
+  )
+}
