@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { Box, Typography, Button, Card, CardContent, TextField, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, CircularProgress, Alert, Snackbar, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import axios from 'axios'
 
 export default function Questionnaire() {
@@ -174,6 +175,16 @@ export default function Questionnaire() {
 
   return (
     <Box sx={{ p: 3, maxWidth: 800, mx: 'auto' }}>
+      <Box sx={{ mb: 3 }}>
+        <Button 
+          startIcon={<ArrowBackIcon />} 
+          onClick={() => navigate('/assessments')}
+          variant="outlined"
+        >
+          Back to Assessments
+        </Button>
+      </Box>
+
       {companyName && (
         <Box sx={{ mb: 2, p: 2, bgcolor: 'primary.light', borderRadius: 1 }}>
           <Typography variant="h6" color="primary.contrastText">
@@ -259,15 +270,4 @@ export default function Questionnaire() {
         <DialogActions>
           <Button onClick={() => navigate('/assessments')}>Cancel</Button>
           <Button onClick={handleCompanySubmit} variant="contained">Continue</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Snackbar
-        open={saveSuccess}
-        autoHideDuration={2000}
-        message="Progress saved"
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      />
-    </Box>
-  )
-}
+      
