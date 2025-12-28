@@ -1,6 +1,6 @@
-﻿const { connectToDatabase } = require('./utils/db.js');
-const User = require('./models/User.js');
-const jwt = require('jsonwebtoken');
+﻿const { connectToDatabase } = require('./utils/db');
+const { generateToken } = require('./utils/jwt');
+const User = require('./models/User');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -42,6 +42,15 @@ exports.handler = async (event) => {
       };
     }
 
+    // Check if user is active
+    if (!user.isActive) {
+      return {
+        statusCode: 401,
+        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'Account is inactive' })
+      };
+    }
+
     const isValid = await user.comparePassword(password);
     if (!isValid) {
       return {
@@ -51,21 +60,36 @@ exports.handler = async (event) => {
       };
     }
 
+    // Check app permission for WMS Questionnaire
+    if (!user.hasAppAccess('wms-questionnaire')) {
+      return {
+        statusCode: 403,
+        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'Access denied to WMS Questionnaire application' })
+      };
+    }
+
     user.lastLogin = new Date();
     await user.save();
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email, role: user.role, company: user.company },
-      process.env.JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    // Use shared token generation
+    const token = generateToken(user);
 
     return {
       statusCode: 200,
       headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
       body: JSON.stringify({
         token,
-        user: { id: user._id, email: user.email, name: user.name, role: user.role, company: user.company }
+        user: { 
+          id: user._id, 
+          email: user.email, 
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          name: user.fullName, // Virtual field
+          role: user.role,
+          appPermissions: user.appPermissions
+        }
       })
     };
   } catch (error) {
