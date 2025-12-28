@@ -7,8 +7,27 @@ const userSchema = new mongoose.Schema({
   passwordHash: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  role: { type: String, enum: ['user', 'admin', 'super_admin'], default: 'user' },
-  appPermissions: [{ type: String }],
+  role: { type: String, enum: ['user', 'admin', 'super_admin', 'viewer'], default: 'user' },
+  appPermissions: {
+    wmsQuestionnaire: {
+      enabled: { type: Boolean, default: false },
+      role: { type: String, default: 'user' },
+      assignedCompanies: [{ type: mongoose.Schema.Types.ObjectId }]
+    },
+    roiAssessment: {
+      enabled: { type: Boolean, default: false },
+      role: { type: String, default: 'user' },
+      assignedCompanies: [{ type: mongoose.Schema.Types.ObjectId }]
+    },
+    dashboardGenerator: {
+      enabled: { type: Boolean, default: false },
+      role: { type: String, default: 'user' }
+    },
+    demoAssist: {
+      enabled: { type: Boolean, default: false },
+      role: { type: String, default: 'user' }
+    }
+  },
   isActive: { type: Boolean, default: true },
   lastLogin: Date,
   createdAt: { type: Date, default: Date.now },
@@ -27,7 +46,12 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
 
 // Method to check app access
 userSchema.methods.hasAppAccess = function(appName) {
-  return this.appPermissions && this.appPermissions.includes(appName);
+  if (!this.isActive) return false;
+  if (this.role === 'super_admin') return true;
+  
+  const appKey = appName.replace(/-/g, '');
+  const appPermission = this.appPermissions?.[appKey];
+  return appPermission && appPermission.enabled;
 };
 
 // Update timestamp before saving
