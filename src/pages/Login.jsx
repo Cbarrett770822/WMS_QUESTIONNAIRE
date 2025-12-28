@@ -4,7 +4,7 @@ import KeyIcon from '@mui/icons-material/Key'
 import axios from 'axios'
 
 export default function Login({ onLogin }) {
-  const [email, setEmail] = useState('admin@wmsquestion.com')
+  const [email, setEmail] = useState('admin@wms.com')
   const [password, setPassword] = useState('admin123')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -95,9 +95,6 @@ export default function Login({ onLogin }) {
             </Button>
           </form>
 
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }} align="center">
-            Default: admin@wmsquestion.com / admin123
-          </Typography>
         </CardContent>
       </Card>
     </Box>
