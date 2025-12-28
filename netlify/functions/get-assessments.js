@@ -1,9 +1,9 @@
 ﻿require('dotenv').config();
 const { connectToDatabase } = require('./utils/db.js');
-const Assessment = require('./models/Assessment.js');
-const Questionnaire = require('./models/Questionnaire.js');
-const User = require('./models/User.js');
+const User = require('./models/User.js'); // Load User first to register schema
 const Company = require('./models/Company.js');
+const Questionnaire = require('./models/Questionnaire.js');
+const Assessment = require('./models/Assessment.js');
 
 exports.handler = async (event) => {
   const headers = {

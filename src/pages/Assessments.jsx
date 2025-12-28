@@ -22,6 +22,22 @@ export default function Assessments() {
     fetchQuestionnaire()
   }, [])
 
+  // Refresh assessments when component becomes visible (user navigates back)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        console.log('Page visible - refreshing assessments')
+        fetchAssessments()
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
+
   const fetchQuestionnaire = async () => {
     try {
       const response = await axios.get('/.netlify/functions/questionnaires')

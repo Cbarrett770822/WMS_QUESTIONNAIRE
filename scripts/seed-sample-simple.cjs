@@ -2,10 +2,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const Company = require('../netlify/functions/models/Company.js');
-const User = require('../netlify/functions/models/User.js');
-const Questionnaire = require('../netlify/functions/models/Questionnaire.js');
-const Assessment = require('../netlify/functions/models/Assessment.js');
 
 const part1 = JSON.parse(fs.readFileSync(path.join(__dirname, 'sample-answers-part1.json'), 'utf8'));
 const part2 = JSON.parse(fs.readFileSync(path.join(__dirname, 'sample-answers-part2.json'), 'utf8'));
@@ -27,49 +23,77 @@ const sampleAnswers = [...part1, ...part2, ...per, ...sys, ...inv, ...rcv, ...st
 
 async function seedSampleAssessment() {
   try {
-    const mongoUri = process.env.MONGODB_URI;
-    await mongoose.connect(mongoUri);
-    console.log('Connected to MongoDB');
+    console.log('Connecting to MongoDB...');
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('Connected successfully');
 
-    let sampleCompany = await Company.findOne({ name: '3PL Sample Company' });
+    const db = mongoose.connection.db;
+
+    // Get or create sample company
+    let sampleCompany = await db.collection('companies').findOne({ name: '3PL Sample Company' });
     if (!sampleCompany) {
-      sampleCompany = await Company.create({
+      const result = await db.collection('companies').insertOne({
         name: '3PL Sample Company',
         industry: 'Third-Party Logistics',
         size: 'large',
         address: { street: '123 Logistics Drive', city: 'Memphis', state: 'TN', country: 'USA', zipCode: '38103' },
-        contact: { phone: '+1-555-0123', email: 'john.sample@3plsample.com' }
+        contact: { phone: '+1-555-0123', email: 'john.sample@3plsample.com' },
+        createdAt: new Date(),
+        updatedAt: new Date()
       });
+      sampleCompany = { _id: result.insertedId };
+      console.log('Created sample company');
+    } else {
+      console.log('Sample company already exists');
     }
 
-    const adminUser = await User.findOne({ email: 'admin@wms.com' });
-    if (!adminUser) throw new Error('Admin user not found. Please ensure admin@wms.com exists in the database.');
+    // Get admin user
+    const adminUser = await db.collection('users').findOne({ email: 'admin@wms.com' });
+    if (!adminUser) {
+      throw new Error('Admin user not found. Please ensure admin@wms.com exists.');
+    }
+    console.log('Found admin user');
 
-    const questionnaire = await Questionnaire.findOne({ title: 'Infor WMS Questionnaire' });
-    if (!questionnaire) throw new Error('Questionnaire not found');
+    // Get questionnaire
+    const questionnaire = await db.collection('questionnaires').findOne({ title: 'Infor WMS Questionnaire' });
+    if (!questionnaire) {
+      throw new Error('Questionnaire not found. Please run seed-comprehensive-questionnaire.cjs first.');
+    }
+    console.log('Found questionnaire');
 
-    const existingSample = await Assessment.findOne({ company: sampleCompany._id, isSample: true });
-    if (existingSample) {
-      await Assessment.deleteOne({ _id: existingSample._id });
+    // Delete existing sample assessment if exists
+    const deleteResult = await db.collection('assessments').deleteMany({ 
+      company: sampleCompany._id, 
+      isSample: true 
+    });
+    if (deleteResult.deletedCount > 0) {
+      console.log('Deleted existing sample assessment');
     }
 
-    const sampleAssessment = await Assessment.create({
+    // Create sample assessment
+    const assessment = {
       company: sampleCompany._id,
       questionnaire: questionnaire._id,
       user: adminUser._id,
       answers: sampleAnswers,
       status: 'completed',
       isSample: true,
-      completedAt: new Date()
-    });
+      completedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
 
-    console.log('Sample assessment created with', sampleAnswers.length, 'answers');
+    await db.collection('assessments').insertOne(assessment);
+    console.log(`✅ Sample assessment created with ${sampleAnswers.length} answers`);
+    console.log('   Company: 3PL Sample Company');
+    console.log('   Status: completed');
+    console.log('   Sample: Yes (cannot be deleted)');
 
+    await mongoose.connection.close();
+    console.log('\nDone!');
   } catch (error) {
     console.error('Error:', error);
     process.exit(1);
-  } finally {
-    await mongoose.connection.close();
   }
 }
 
